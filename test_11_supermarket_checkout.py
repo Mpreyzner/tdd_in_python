@@ -40,7 +40,10 @@ class Checkout:
         self._items.append(item)
 
     def get_total_cost(self):
-        return 5
+        cost = 0
+        for item in self._items:
+            cost += item.get_price()
+        return cost
 
 
 def test_simple_price():
