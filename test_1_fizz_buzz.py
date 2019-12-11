@@ -5,14 +5,17 @@
 from fizzbuzz import fizzbuzz
 import pytest
 
-
 divisible_by_tree = [3, 6, 9, 12, 15, 300]
 
-
-@pytest.mark.parametrize("num", divisible_by_tree)
-def test_fizz(num):
-    assert fizzbuzz(num) == 'Fizz'
+divisible_by_five = [5, 10, 15, 20, 500]
 
 
-def test_buzz():
-    assert fizzbuzz(5) == 'Buzz'
+# http://doc.pytest.org/en/latest/example/parametrize.html
+@pytest.mark.parametrize("number", divisible_by_tree)
+def test_fizz(number):
+    assert fizzbuzz(number) == 'Fizz'
+
+
+@pytest.mark.parametrize("number", divisible_by_five)
+def test_buzz(number):
+    assert fizzbuzz(number) == 'Buzz'
