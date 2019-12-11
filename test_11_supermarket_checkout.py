@@ -25,9 +25,11 @@
 
 class Item:
     _price = 0
+    _letter = None
 
-    def __init__(self, price):
+    def __init__(self, letter, price):
         self._price = price
+        self._letter = letter
 
     def get_price(self):
         return self._price
@@ -53,21 +55,27 @@ class Checkout:
         return self._items
 
 
+item_a = Item('A', 50)
+item_b = Item('B', 30)
+item_c = Item('C', 20)
+item_d = Item('D', 15)
+
+
 def test_simple_add_items():
     checkout = Checkout()
-    checkout.add_item(Item(5))
-    checkout.add_item(Item(1))
+    checkout.add_item(item_a)
+    checkout.add_item(item_b)
     assert len(checkout.get_items()) == 2
 
 
 def test_simple_price():
     checkout = Checkout()
-    checkout.add_item(Item(5))
-    assert checkout.get_total_cost() == 5
+    checkout.add_item(item_a)
+    assert checkout.get_total_cost() == 50
 
 
 def test_simple_price_two_items():
     checkout = Checkout()
-    checkout.add_item(Item(5))
-    checkout.add_item(Item(1))
-    assert checkout.get_total_cost() == 6
+    checkout.add_item(item_a)
+    checkout.add_item(item_b)
+    assert checkout.get_total_cost() == 80
