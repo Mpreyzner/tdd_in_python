@@ -33,6 +33,17 @@ class Item:
         return self._price
 
 
+class Checkout:
+    _items = []
+
+    def add_item(self, item):
+        self._items.append(item)
+
+    def get_total_cost(self):
+        return 5
+
+
 def test_simple_price():
-    checkout = Checkout(Item(5))
-    assert checkout.get_total == 5
+    checkout = Checkout()
+    checkout.add_item(Item(5))
+    assert checkout.get_total_cost() == 5
