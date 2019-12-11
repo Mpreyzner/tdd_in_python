@@ -36,6 +36,11 @@ def test_simple_add_items():
     assert len(checkout.get_items()) == 2
 
 
+def test_simple_no_items():
+    checkout = Checkout()
+    assert checkout.get_total_cost() == 0
+
+
 def test_simple_price():
     checkout = Checkout()
     checkout.add_item(item_a)
