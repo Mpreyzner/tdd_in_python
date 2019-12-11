@@ -3,10 +3,15 @@
 # For the multiples of five print Buzz instead of the number
 # For numbers which are multiples of both three and five print FizzBuzz instead of the number
 from fizzbuzz import fizzbuzz
+import pytest
 
 
-def test_fizz():
-    assert fizzbuzz(3) == 'Fizz'
+divisible_by_tree = [3, 6, 9, 12, 15, 300]
+
+
+@pytest.mark.parametrize("num", divisible_by_tree)
+def test_fizz(num):
+    assert fizzbuzz(num) == 'Fizz'
 
 
 def test_buzz():
