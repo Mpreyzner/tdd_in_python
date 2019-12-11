@@ -17,15 +17,23 @@
 from collections import Counter
 
 
-def most_frequent(list):
+def most_frequent(words):
     result = {}
-    for word in list:
+    for word in words:
         counter = 1
         if word in result:
             counter = result[word] + 1
         result[word] = counter
-    return result
+    foo = []
+    for key, value in result.items():
+            temp = (key, value)
+            foo.append(temp)
+    return foo
 
 
 def test_most_frequent():
-    assert most_frequent(['apple', 'banana', 'apple']) == {'apple': 2, 'banana': 1}
+    assert most_frequent(['apple', 'banana', 'apple']) == [('apple', 2), ('banana', 1)]
+
+
+def test_most_frequent_same_frequency():
+    assert most_frequent(['banana', 'apple', 'apple', 'banana']) == [('apple', 2), ('banana', 2)]
