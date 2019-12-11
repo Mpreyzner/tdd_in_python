@@ -14,11 +14,18 @@
 # 3 america
 # 2 north
 # 2 south
+from collections import Counter
 
 
 def most_frequent(list):
-    return [('apple', 2), ('banana', 1)]
+    result = {}
+    for word in list:
+        counter = 1
+        if word in result:
+            counter = result[word] + 1
+        result[word] = counter
+    return result
 
 
 def test_most_frequent():
-    assert most_frequent(['apple', 'banana', 'apple']) == [('apple', 2), ('banana', 1)]
+    assert most_frequent(['apple', 'banana', 'apple']) == {'apple': 2, 'banana': 1}
