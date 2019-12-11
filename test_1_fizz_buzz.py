@@ -11,6 +11,8 @@ divisible_by_five = [5, 10, 20, 500]
 
 divisible_by_both = [15, 30, 45, 60]
 
+divisible_by_none = [0, 1, 2, 4, 7, 8, 11]
+
 
 # http://doc.pytest.org/en/latest/example/parametrize.html
 # generators could also be used instead
@@ -28,5 +30,6 @@ def test_fizzbuzz():
     assert fizzbuzz(15) == 'FizzBuzz'
 
 
-def test_fizzbuzz_for_number():
+@pytest.mark.parametrize("number", divisible_by_none)
+def test_fizzbuzz_for_number(number):
     assert fizzbuzz(2) == 2
