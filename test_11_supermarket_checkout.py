@@ -47,3 +47,10 @@ def test_simple_price_two_items():
     checkout.add_item(item_a)
     checkout.add_item(item_b)
     assert checkout.get_total_cost() == 80
+
+def test_offer_price_two_items():
+    checkout = Checkout()
+    checkout.add_item(item_a)
+    checkout.add_item(item_a)
+    checkout.add_item(item_a)
+    assert checkout.get_total_cost() == 130
