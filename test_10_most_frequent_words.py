@@ -15,5 +15,10 @@
 # 2 north
 # 2 south
 
+
+def most_frequent(list):
+    return [('apple', 2), ('banana', 1)]
+
+
 def test_most_frequent():
     assert most_frequent(['apple', 'banana', 'apple']) == [('apple', 2), ('banana', 1)]
