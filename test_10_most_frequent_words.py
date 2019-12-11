@@ -17,7 +17,7 @@
 from collections import Counter
 
 
-def most_frequent(words):
+def most_frequent(words, n):
     result = {}
     for word in words:
         counter = 1
@@ -32,12 +32,12 @@ def most_frequent(words):
 
 
 def test_most_frequent():
-    assert most_frequent(['apple', 'banana', 'apple']) == [('apple', 2), ('banana', 1)]
+    assert most_frequent(['apple', 'banana', 'apple' 'yeti'], 2) == [('apple', 2), ('banana', 1)]
 
 
 def test_most_frequent_same_frequency():
-    assert most_frequent(['banana', 'apple', 'apple', 'banana']) == [('apple', 2), ('banana', 2)]
+    assert most_frequent(['banana', 'apple', 'apple', 'banana'], 2) == [('apple', 2), ('banana', 2)]
 
 
 def test_most_frequent_empty():
-    assert most_frequent([]) == []
+    assert most_frequent([], 2) == []
