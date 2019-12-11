@@ -37,3 +37,7 @@ def test_most_frequent():
 
 def test_most_frequent_same_frequency():
     assert most_frequent(['banana', 'apple', 'apple', 'banana']) == [('apple', 2), ('banana', 2)]
+
+
+def test_most_frequent_empty():
+    assert most_frequent([]) == []
