@@ -36,8 +36,12 @@ class Item:
 class Checkout:
     _items = []
 
+    def __init__(self):
+        self._items = []
+
     def add_item(self, item):
         self._items.append(item)
+        print(self._items)
 
     def get_total_cost(self):
         cost = 0
@@ -45,8 +49,25 @@ class Checkout:
             cost += item.get_price()
         return cost
 
+    def get_items(self):
+        return self._items
+
+
+def test_simple_add_items():
+    checkout = Checkout()
+    checkout.add_item(Item(5))
+    checkout.add_item(Item(1))
+    assert len(checkout.get_items()) == 2
+
 
 def test_simple_price():
     checkout = Checkout()
     checkout.add_item(Item(5))
     assert checkout.get_total_cost() == 5
+
+
+def test_simple_price_two_items():
+    checkout = Checkout()
+    checkout.add_item(Item(5))
+    checkout.add_item(Item(1))
+    assert checkout.get_total_cost() == 6
