@@ -25,7 +25,7 @@ def most_frequent(words):
             counter = result[word] + 1
         result[word] = counter
     foo = []
-    for key, value in result.items():
+    for key, value in sorted(result.items()):
             temp = (key, value)
             foo.append(temp)
     return foo
