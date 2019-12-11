@@ -2,9 +2,7 @@
 # For multiples of three print Fizz instead of the number
 # For the multiples of five print Buzz instead of the number
 # For numbers which are multiples of both three and five print FizzBuzz instead of the number
-def fizzbuzz(number):
-    if number == 3:
-        return 'Fizz'
+from fizzbuzz import fizzbuzz
 
 
 def test_fizz():
