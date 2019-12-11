@@ -18,21 +18,11 @@ from collections import Counter
 
 
 def most_frequent(words, n):
-    result = {}
-    for word in words:
-        counter = 1
-        if word in result:
-            counter = result[word] + 1
-        result[word] = counter
-    foo = []
-    for key, value in sorted(result.items()):
-            temp = (key, value)
-            foo.append(temp)
-    return foo
+    return sorted(Counter(words).most_common(n))
 
 
 def test_most_frequent():
-    assert most_frequent(['apple', 'banana', 'apple' 'yeti'], 2) == [('apple', 2), ('banana', 1)]
+    assert most_frequent(['apple', 'banana', 'apple', 'yeti'], 2) == [('apple', 2), ('banana', 1)]
 
 
 def test_most_frequent_same_frequency():
