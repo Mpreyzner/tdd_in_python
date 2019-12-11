@@ -9,6 +9,8 @@ divisible_by_tree = [3, 6, 9, 12]
 
 divisible_by_five = [5, 10, 20, 500]
 
+divisible_by_both = [15, 30, 45, 60]
+
 
 # http://doc.pytest.org/en/latest/example/parametrize.html
 # generators could also be used instead
@@ -24,3 +26,7 @@ def test_buzz(number):
 
 def test_fizzbuzz():
     assert fizzbuzz(15) == 'FizzBuzz'
+
+
+def test_fizzbuzz_for_number():
+    assert fizzbuzz(2) == 2
