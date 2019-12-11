@@ -19,3 +19,6 @@ def test_fizz(number):
 @pytest.mark.parametrize("number", divisible_by_five)
 def test_buzz(number):
     assert fizzbuzz(number) == 'Buzz'
+
+def test_fizzbuzz():
+    assert fizzbuzz(15) == 'FizzBuzz'
