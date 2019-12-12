@@ -43,12 +43,12 @@ def test_not_empty_list():
 def test_bumping_item():
     program = Program()
 
+    program.open('1.txt')
     program.open('2.txt')
-    program.open('1.txt')
-    program.open('1.txt')
+    program.open('2.txt')
 
     file_list = program.get_recent_file_list()
-    assert file_list[0] == '1.txt'
+    assert file_list[0] == '2.txt'
 
 
 def test_item_should_not_be_duplicated():
@@ -70,4 +70,5 @@ def test_list_should_have_up_to_15_items():
 
     file_list = program.get_recent_file_list()
     assert len(file_list) == 15
+    print(file_list)
     assert '1.txt' not in file_list
