@@ -9,25 +9,7 @@
 # list If an opened file already exists in the recent file list, it is bumped to the top, not duplicated in the list
 # If the recent file list gets full (typical number of items is 15), the oldest item is removed when a new item is
 # added
-from collections import Counter, deque
-
-
-class Program:
-    _max_list_length = 15
-
-    def __init__(self):
-        self._recent_file_list = deque()
-
-    def open(self, file):
-        if file in self._recent_file_list:
-            self._recent_file_list.remove(file)
-        self._recent_file_list.appendleft(file)
-        if len(self._recent_file_list) > self._max_list_length:
-            self._recent_file_list.pop()
-        return self
-
-    def get_recent_file_list(self):
-        return self._recent_file_list
+from filelist import Program
 
 
 def test_empty_list():
