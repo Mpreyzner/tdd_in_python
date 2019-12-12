@@ -22,7 +22,7 @@
 import pytest
 
 
-def is_string_password(password):
+def is_string_password(password, admin=None):
     if len(password) < 7:
         return False
     digits = sum(char.isdigit() for char in password)
@@ -36,6 +36,7 @@ def is_string_password(password):
 
 not_strong_passwords = ['a', 'aaaaaaaa', '1234567']
 strong_passwords = ['aaaa1111', 'aaaa1aaaa', 'a1234567']
+not_strong_admin_passwords = ['a', 'aaaaaaaa', '1234567', '123456789a']
 
 
 @pytest.mark.parametrize("password", not_strong_passwords)
@@ -46,3 +47,8 @@ def test_is_strong_password_not(password):
 @pytest.mark.parametrize("password", strong_passwords)
 def test_is_strong_password(password):
     assert is_string_password(password) is True
+
+
+@pytest.mark.parametrize("password", not_strong_admin_passwords)
+def test_is_strong_admin_password_not(password):
+    assert is_string_password(password, admin=True) is False
