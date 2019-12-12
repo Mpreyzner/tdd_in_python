@@ -25,7 +25,10 @@ import pytest
 def is_string_password(password):
     if len(password) < 7:
         return False
-    letters = sum(char.isdigit() for char in password)
+    digits = sum(char.isdigit() for char in password)
+    if digits < 1:
+        return False
+    letters = sum(char.isalpha() for char in password)
     if letters < 1:
         return False
     return True
