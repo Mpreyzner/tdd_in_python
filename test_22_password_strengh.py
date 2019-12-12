@@ -35,8 +35,14 @@ def is_string_password(password):
 
 
 not_strong_passwords = ['a', 'aaaaaaaa', '1234567']
+strong_passwords = ['aaaa1111', 'aaaa1aaaa', 'a1234567']
 
 
 @pytest.mark.parametrize("password", not_strong_passwords)
-def test_is_strong_password(password):
+def test_is_strong_password_not(password):
     assert is_string_password(password) is False
+
+
+@pytest.mark.parametrize("password", strong_passwords)
+def test_is_strong_password(password):
+    assert is_string_password(password) is True
