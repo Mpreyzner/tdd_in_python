@@ -22,5 +22,10 @@ class Program():
 
 
 def test_empty_list():
-    file_list = Program().open('somefile.txt').get_recent_file_list()
+    file_list = Program().get_recent_file_list()
     assert len(file_list) == 0
+
+
+def test_not_list():
+    file_list = Program().open('somefile.txt').get_recent_file_list()
+    assert len(file_list) == 1
