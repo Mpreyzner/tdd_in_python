@@ -14,6 +14,7 @@ from collections import Counter
 
 class Program:
     _recent_file_list = []
+    _max_list_length = 15
 
     def __init__(self):
         self._recent_file_list = []
@@ -56,3 +57,14 @@ def test_item_should_not_be_duplicated():
 
     file_list = program.get_recent_file_list()
     assert len(file_list) == 1
+
+
+def test_list_should_have_up_to_15_items():
+    program = Program()
+
+    for i in range(16):
+        file_name = str(i) + '.txt'
+        program.open(file_name)
+
+    file_list = program.get_recent_file_list()
+    assert len(file_list) == 15
