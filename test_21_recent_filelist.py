@@ -55,4 +55,4 @@ def test_item_should_not_be_duplicated():
     program.open('1.txt')
 
     file_list = program.get_recent_file_list()
-    assert len(file_list) == 2
+    assert len(file_list) == 1
