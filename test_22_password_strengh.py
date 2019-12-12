@@ -22,7 +22,9 @@
 
 
 def is_string_password(password):
-    return False
+    if len(password) < 7:
+        return False
+    return True
 
 
 def test_is_strong_password():
