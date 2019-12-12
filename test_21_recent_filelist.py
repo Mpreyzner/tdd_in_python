@@ -9,25 +9,27 @@
 # list If an opened file already exists in the recent file list, it is bumped to the top, not duplicated in the list
 # If the recent file list gets full (typical number of items is 15), the oldest item is removed when a new item is
 # added
-from collections import Counter
+from collections import Counter, deque
 
 
 class Program:
-    _recent_file_list = []
     _max_list_length = 15
 
     def __init__(self):
-        self._recent_file_list = []
+        self._recent_file_list = deque()
 
     def open(self, file):
-        self._recent_file_list.append(file)
-        self._recent_file_list = list(sorted(Counter(self._recent_file_list)))
+        self._recent_file_list.appendleft(file)
         if len(self._recent_file_list) > self._max_list_length:
-            self._recent_file_list = self._recent_file_list[:self._max_list_length]
+            self._recent_file_list.pop()
         return self
 
     def get_recent_file_list(self):
-        return self._recent_file_list
+        counter = Counter(self._recent_file_list)
+        result = []
+        for name, quantity in counter.items():
+            result.append(name)
+        return result
 
 
 def test_empty_list():
@@ -64,11 +66,10 @@ def test_item_should_not_be_duplicated():
 def test_list_should_have_up_to_15_items():
     program = Program()
 
-    for i in range(1, 16):
+    for i in range(1, 17):
         file_name = str(i) + '.txt'
         program.open(file_name)
 
     file_list = program.get_recent_file_list()
     assert len(file_list) == 15
-    print(file_list)
     assert '1.txt' not in file_list
