@@ -22,6 +22,8 @@ class Program:
     def open(self, file):
         self._recent_file_list.append(file)
         self._recent_file_list = list(sorted(Counter(self._recent_file_list)))
+        if len(self._recent_file_list) > self._max_list_length:
+            self._recent_file_list = self._recent_file_list[:self._max_list_length]
         return self
 
     def get_recent_file_list(self):
