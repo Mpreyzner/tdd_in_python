@@ -19,13 +19,21 @@
 # We need to provide feedback to the user about the strength of their password
 #
 #     Provide the user with a list of reasons why their password is 'weak'
+import pytest
 
 
 def is_string_password(password):
     if len(password) < 7:
         return False
+    letters = sum(char.isdigit() for char in password)
+    if letters < 1:
+        return False
     return True
 
 
-def test_is_strong_password():
-    assert is_string_password('a') is False
+not_strong_passwords = ['a', 'aaaaaaaa', '1234567']
+
+
+@pytest.mark.parametrize("password", not_strong_passwords)
+def test_is_strong_password(password):
+    assert is_string_password(password) is False
