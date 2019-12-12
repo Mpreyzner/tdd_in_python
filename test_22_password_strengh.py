@@ -21,5 +21,9 @@
 #     Provide the user with a list of reasons why their password is 'weak'
 
 
+def is_string_password(password):
+    return False
+
+
 def test_is_strong_password():
     assert is_string_password('a') is False
