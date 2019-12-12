@@ -19,3 +19,7 @@
 # We need to provide feedback to the user about the strength of their password
 #
 #     Provide the user with a list of reasons why their password is 'weak'
+
+
+def test_is_strong_password():
+    assert is_string_password('a') is False
