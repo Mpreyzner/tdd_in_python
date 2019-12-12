@@ -10,6 +10,17 @@
 # If the recent file list gets full (typical number of items is 15), the oldest item is removed when a new item is
 # added
 
+
+class Program():
+    _recent_file_list = []
+
+    def open(self, file):
+        return self
+
+    def get_recent_file_list(self):
+        return self._recent_file_list
+
+
 def test_empty_list():
     file_list = Program().open('somefile.txt').get_recent_file_list()
     assert len(file_list) == 0
