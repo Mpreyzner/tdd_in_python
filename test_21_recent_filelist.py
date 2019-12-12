@@ -30,6 +30,17 @@ def test_empty_list():
     assert len(file_list) == 0
 
 
-def test_not_list():
+def test_not_empty_list():
     file_list = Program().open('somefile.txt').get_recent_file_list()
     assert len(file_list) == 1
+
+
+def test_bumping_item():
+    program = Program()
+    
+    program.open('2.txt')
+    program.open('1.txt')
+    program.open('1.txt')
+
+    file_list = program.get_recent_file_list()
+    assert file_list[0] == '1.txt'
