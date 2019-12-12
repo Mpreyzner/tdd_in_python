@@ -14,7 +14,11 @@
 class Program():
     _recent_file_list = []
 
+    def __init__(self):
+        self._recent_file_list = []
+
     def open(self, file):
+        self._recent_file_list.append(file)
         return self
 
     def get_recent_file_list(self):
