@@ -62,7 +62,20 @@ def test_offer_price_tree_items():
     assert checkout.get_total_cost() == 130
 
 
-def test_offer_price_items_not_in_rder():
+def test_offer_price_tree_items_duplicate_offer():
+    checkout = Checkout()
+    checkout.add_item(item_a)
+    checkout.add_item(item_a)
+    checkout.add_item(item_a)
+
+    checkout.add_item(item_a)
+    checkout.add_item(item_a)
+    checkout.add_item(item_a)
+
+    assert checkout.get_total_cost() == 150 + 130
+
+
+def test_offer_price_items_not_in_order():
     checkout = Checkout()
     checkout.add_item(item_a)
     checkout.add_item(item_a)
@@ -78,6 +91,7 @@ def test_offer_price_two_items():
     assert checkout.get_total_cost() == 45
 
 
+#
 def test_offer_two_offers():
     checkout = Checkout()
     checkout.add_item(item_b)

@@ -20,7 +20,7 @@ class Checkout:
         items = self.get_items()
         if self._has_offers():
             for offer in self._offers:
-                if offer.get_item() in items and items.count(offer.get_item()) == offer.get_quantity():
+                if offer.get_item() in items and items.count(offer.get_item()) >= offer.get_quantity():
                     cost += offer.get_price()
                     for i in range(offer.get_quantity()):
                         items.remove(offer.get_item())
